@@ -1,36 +1,24 @@
-import { Button } from "@/components/ui/button"
-
-export default function Hero() {
+export function Hero() {
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-purple-900 relative overflow-hidden">
-      {/* Background effects */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.1),transparent_50%)]" />
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-purple-950/20 to-black">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/20 via-black to-black"></div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center max-w-4xl mx-auto">
-          <h1 className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-white via-purple-200 to-purple-400 bg-clip-text text-transparent">
-            HideXS
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-            Ferramentas avançadas para automação educacional. Scripts inteligentes para otimizar seu aprendizado.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              className="rounded-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white border-0"
-            >
-              Explorar Scripts
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="rounded-full border-purple-500/50 text-purple-200 hover:bg-purple-500/10 bg-transparent"
-            >
-              Documentação
-            </Button>
-          </div>
+      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+        <h1 className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-purple-600 bg-clip-text text-transparent mb-6">
+          HideXS
+        </h1>
+
+        <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto">
+          Ferramentas avançadas para automação educacional e produtividade
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <button className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl text-white font-semibold hover:scale-105 transition-transform duration-200">
+            Explorar Scripts
+          </button>
+          <button className="px-8 py-4 border border-purple-500 rounded-2xl text-purple-400 font-semibold hover:bg-purple-500/10 transition-colors duration-200">
+            Saiba Mais
+          </button>
         </div>
       </div>
     </section>

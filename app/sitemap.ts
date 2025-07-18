@@ -1,8 +1,8 @@
-import { siteUrl } from "../lib/constants";
-import { basehub } from "basehub";
-import type { MetadataRoute } from "next";
+import { siteUrl } from "../lib/constants"
+import { basehub } from "basehub"
+import type { MetadataRoute } from "next"
 
-export const revalidate = 1800; // 30 minutes - adjust as needed
+export const revalidate = 1800 // 30 minutes - adjust as needed
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const data = await basehub().query({
@@ -27,9 +27,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         },
       },
     },
-  });
+  })
 
-  let index = 1;
+  let index = 2 // Start index from 2 to leave priority 1 for the base URL
   const formattedPages = data.site.pages.items.map(
     (page) =>
       ({
@@ -38,7 +38,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         changeFrequency: "daily",
         priority: index++,
       }) satisfies MetadataRoute.Sitemap[number],
-  );
+  )
 
   const formattedBlogPosts = data.site.blog.posts.items.map(
     (post) =>
@@ -48,7 +48,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         changeFrequency: "daily",
         priority: index++,
       }) satisfies MetadataRoute.Sitemap[number],
-  );
+  )
 
   const formattedChangelogPosts = data.site.changelog.posts.items.map(
     (post) =>
@@ -58,8 +58,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         changeFrequency: "daily",
         priority: index++,
       }) satisfies MetadataRoute.Sitemap[number],
-  );
+  )
 
-  const routes = [...formattedPages, ...formattedBlogPosts, ...formattedChangelogPosts];
-  return routes;
+  const routes = [
+    {
+      url: siteUrl,
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 1,
+    },
+    ...formattedPages,
+    ...formattedBlogPosts,
+    ...formattedChangelogPosts,
+  ]
+  return routes
 }
